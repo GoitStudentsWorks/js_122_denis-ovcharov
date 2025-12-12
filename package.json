@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build --base=/animals-goit-project/",
     "preview": "vite preview",
-    "push": "git add . && git commit 'update' && git push"
+    "push": "git add . && git commit -m 'update' && git push"
   },
   "devDependencies": {
     "glob": "^11.0.0",
@@ -18,6 +18,12 @@
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "accordion-js": "^3.4.1",
+    "basiclightbox": "^5.0.4",
+    "css-star-rating": "^1.3.1",
+    "raty-js": "^4.3.0",
+    "sweetalert2": "^11.26.4",
+    "swiper": "^12.0.3",
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-html-inject": "^1.1.2"
   }
