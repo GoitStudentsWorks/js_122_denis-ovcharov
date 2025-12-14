@@ -1,0 +1,96 @@
+#feedback {
+    padding: 64px 0;
+}
+
+.feedback-title {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #02060a;
+
+    margin-bottom: 24px;
+}
+
+.feedback-text {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: #02060a;
+
+    margin-bottom: 40px;
+}
+
+.swiper.feedback-swiper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.swiper-wrapper {
+    margin: 0 auto;
+}
+
+.feedback-comment {
+    font-family: "IBM Plex Sans",
+    sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #02060a;
+}
+
+.feedback-author {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #02060a;
+
+    margin-top: 32px;
+}
+
+.feedback-navigation {
+    margin-top: 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.feedback-swiper-pagination {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.arrow {
+    display: flex;
+    gap: 16px;
+
+}
+
+.arrow button {
+    border: 1px solid #c3b49d;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    background-color: #eee9e3;
+
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-swiper-button-prev.is-disabled,
+.feedback-swiper-button-next.is-disabled,
+.feedback-swiper-button-prev.swiper-button-disabled,
+.feedback-swiper-button-next.swiper-button-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+}
