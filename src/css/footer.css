@@ -1,0 +1,162 @@
+.footer {
+  background: var(--color-mariner, #c3b49d);
+  padding: 48px 0 32px;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-box {
+  width: 100%;
+  max-width: 335px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* ===== LOGO ===== */
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.footer-logo:focus-visible {
+  box-shadow: 0 0 0 4px var(--opacity-neutral-darkest-15, rgba(2, 6, 10, 0.15));
+  border-radius: 12px;
+}
+
+.footer-logo-icon {
+  display: block;
+  width: 302px;
+  height: auto;
+  max-width: 100%;
+}
+
+/* ===== NAV ===== */
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-nav-link {
+  font-family: var(--font-family, 'IBM Plex Sans', sans-serif);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-neutral-darkest, #02060a);
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+
+  transition: opacity 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.footer-nav-link:hover,
+.footer-nav-link:focus-visible {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.footer-nav-link:active {
+  opacity: 0.75;
+  transform: translateY(0);
+}
+
+.footer-nav-link:focus-visible {
+  box-shadow: 0 0 0 4px var(--opacity-neutral-darkest-15, rgba(2, 6, 10, 0.15));
+  border-radius: 10px;
+}
+
+/* ===== SOCIAL ===== */
+.footer-social-list {
+  display: flex;
+  gap: 24px;
+  width: 88px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-social-link {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-neutral-darkest, #02060a);
+  cursor: pointer;
+  outline: none;
+
+  transition: opacity 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.footer-social-icon {
+  display: block;
+  fill: currentColor;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.footer-social-link:active {
+  opacity: 0.75;
+  transform: translateY(0);
+}
+
+.footer-social-link:focus-visible {
+  box-shadow: 0 0 0 4px var(--opacity-neutral-darkest-15, rgba(2, 6, 10, 0.15));
+  border-radius: 10px;
+}
+
+/* ===== COPYRIGHT ===== */
+.footer-copy {
+  margin-top: 32px;
+  font-family: var(--font-family, 'IBM Plex Sans', sans-serif);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-neutral-darkest, #02060a);
+}
+
+/* ===== TABLET 768+ ===== */
+@media only screen and (min-width: 768px) {
+  .footer-box {
+    max-width: 480px;
+    gap: 80px;
+  }
+
+  .footer-nav-list {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+/* ===== DESKTOP 1440+ ===== */
+@media only screen and (min-width: 1440px) {
+  .footer {
+    padding: 64px 0 64px;
+  }
+
+  .footer-nav-link {
+    font-size: 14px;
+  }
+
+  .footer-copy {
+    margin-top: 48px;
+    font-size: 14px;
+  }
+}
