@@ -1,11 +1,19 @@
+// Swiper
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-
+import { Navigation, Pagination} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+// Star-rating.css
+import 'css-star-rating/css/star-rating.css';
 
+// iziToast
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
+// Import API function
+import { getFeedbacks } from './api.js';
 
 export async function initFeedbackSection() {
     const section = document.querySelector('#feedback');
@@ -16,26 +24,48 @@ export async function initFeedbackSection() {
     const paginationEl = section.querySelector('.feedback-swiper-pagination');
     const nextBtn = section.querySelector('.feedback-swiper-button-next');
     const prevBtn = section.querySelector('.feedback-swiper-button-prev');
-
-    // Лоадер (підлаштуй під свій)
-    section.classList.add('is-loading');
+    const loader = section.querySelector('.loader');
+    
+    // Loader on
+    loader.classList.remove('hideshow');
 
     try {
-        const response = await fetchFeedbacks();
-        const feedbacks = response.feedbacks; 
+        // Backend request
+        const page = Math.floor(Math.random() * 9) + 1;
+        const response = await getFeedbacks(5, page);
+        const feedbacks = response.feedbacks;
 
+
+        //Validate returns: no array or < 3 feedback = error => catch block.
         if (!Array.isArray(feedbacks) || feedbacks.length < 3) {
         throw new Error('Not enough feedbacks (min 3 required)');
         }
-        // 1) РЕНДЕР
+
+        // Render
         wrapper.innerHTML = feedbacks.map(renderFeedbackSlide).join('');
 
-        // 2) SWIPER — тільки після рендеру
+        // Swiper init
         new Swiper(swiperEl, {
         modules: [Navigation, Pagination],
+        speed: 1000,
         slidesPerView: 1,
         spaceBetween: 16,
         loop: false,
+        resistanceRatio: 0.85,
+        touchRatio: 1.2,
+        
+        breakpoints: {
+            768: {              
+            slidesPerView: 2,
+            spaceBetween: 32, 
+            },
+
+            1440: {             
+            slidesPerView: 2,
+            spaceBetween: 32,
+            },
+        },
+
 
         pagination: {
             el: paginationEl,
@@ -46,51 +76,69 @@ export async function initFeedbackSection() {
         navigation: {
             nextEl: nextBtn,
             prevEl: prevBtn,
-            disabledClass: 'is-disabled', // (опційно) свій клас
-        },
+            disabledClass: 'is-disabled',
+            },
         });
     } catch (err) {
         console.error(err);
-        
-        // показати повідомлення користувачу (підстав свій toast/нотіфікацію)
-        section.querySelector('.feedback-text')?.insertAdjacentHTML(
-        'afterend',
-        `<p class="feedback-error">Не вдалося завантажити відгуки. Спробуй пізніше.</p>`
-        );
+        iziToast.error({
+            title: 'Error',
+            message: err.message,
+            position: 'topRight',
+        });
     } finally {
-        section.classList.remove('is-loading');
+        // Loader off
+        loader.classList.add('hideshow');
     }
 }
 
-// HTML картка "відгук"
+// HTML render function
 function renderFeedbackSlide(item) {
     const name = item?.author ?? 'User';
     const text = item?.description ?? '';
-    const rating = Number(item?.rate ?? 0);
+    const rating = clampRating(item?.rate ?? 0);
 
+    
+    const full = Math.floor(rating);
+    const hasHalf = rating % 1 >= 0.5;
+    const ratingClass = `rating value-${full}${hasHalf ? ' half' : ''} star-icon`;
+
+    const stars = Array.from({ length: 5 })
+        .map(
+            () => `
+        <div class="star">
+            <svg class="star-empty" aria-hidden="true">
+                <use href="../img/star-rating.icons.svg#star-empty"></use>
+            </svg>
+            <svg class="star-half" aria-hidden="true">
+                <use href="../img/star-rating.icons.svg#star-half"></use>
+            </svg>
+            <svg class="star-filled" aria-hidden="true">
+                <use href="../img/star-rating.icons.svg#star-filled"></use>
+            </svg>
+        </div>`
+            ).join('');
+        
     return `
         <div class="swiper-slide">
-        <div class="feedback-card">
-            <div class="feedback-stars" data-rating="${rating}"></div>
-            <p class="feedback-comment">${text}</p>
-            <p class="feedback-author">${name}</p>
-        </div>
+            <div class="feedback-card">
+                <div class="${ratingClass}" aria-label="Rating: ${rating} out of 5">
+                    <div class="star-container">
+                        ${stars}
+                    </div>
+                </div>
+                <p class="feedback-comment">${text}</p>
+                <p class="feedback-author">${name}</p>
+            </div>
         </div>
     `;
 }
 
-
-// запит на бекенд
-const BASE_URL = 'https://paw-hut.b.goit.study';
-
-export async function fetchFeedbacks() {
-    const res = await fetch(`${BASE_URL}/api/feedbacks?limit=5&page=${Math.floor(Math.random() * 9) + 1}`);
-
-    if (!res.ok) {
-        throw new Error(`Request failed: ${res.status}`);
-    }
-
-    return res.json();
+// Validation rating between 0 and 5
+function clampRating(val) {
+    const n = Number(val);
+    if (!Number.isFinite(n)) return 0;
+    return Math.max(0, Math.min(5, n));
 }
 
 
