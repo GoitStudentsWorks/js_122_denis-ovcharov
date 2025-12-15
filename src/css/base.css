@@ -2,7 +2,7 @@
   /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
   --font-family: "IBM Plex Sans", sans-serif;
   --second-family: "Open Sans", sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.5;
   font-weight: 400;
   color: #02060a;
@@ -10,6 +10,7 @@
 }
 
 body {
+  font-family: var(--font-family);
   display: flex;
   flex-direction: column;
   min-width: 100vw;
@@ -17,4 +18,18 @@ body {
   margin: 0;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+}
 
+.is-open {
+  transform: translateX(0);
+}
