@@ -60,41 +60,25 @@
             </div>
         </div>
         
-        <!-- Mobile controls -->
         <div class="controls-wrapper">
             <div class="controls-wrapper-mobile">
                 <div class="swiper-pagination"></div>
-                
             </div>
+
             <div class="swiper-buttons-container">
-                <div class="swiper-button-prev ">
+                <div class="swiper-button-prev">
                     <svg class="icon">
                         <use href="./img/sprite.svg#icon-left">
                         </use>
                     </svg>
                 </div>
-                <div class="swiper-button-next "><svg class="icon">
+                <div class="swiper-button-next"><svg class="icon">
                     <use href="./img/sprite.svg#icon-right">
                     </use>
                 </svg>
                 </div>
             </div>
         </div>
-
-        <!-- Desktop controls
-        <div class="swiper-button-next is-hidden-desktop">
-            <svg class="icon">
-                <use href="./img/sprite.svg#icon-right">
-                </use>
-            </svg>
-        </div>
-        <div class="swiper-button-prev is-hidden-desktop">
-            <svg class="icon">
-                <use href="./img/sprite.svg#icon-left">
-                </use>
-            </svg>
-        </div>
-        <div class="swiper-pagination is-hidden-desktop"></div> -->
 
     </div>
 </section>
@@ -103,15 +87,16 @@
 
 <script>
     var swiper = new Swiper(".mySwiper", {
-    speed: 600,
-    parallax: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
+      cssMode: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      mousewheel: true,
+      keyboard: true,
+    });
 </script>
