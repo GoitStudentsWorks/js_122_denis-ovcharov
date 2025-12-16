@@ -1,5 +1,5 @@
 .about-us{
-    width: 335px;
+    max-width: 335px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -17,7 +17,7 @@
 
 @media only screen and (min-width: 768px) {
     .about-us{
-        width: 704px;
+        max-width: 704px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -25,7 +25,7 @@
 
 @media only screen and (min-width: 1440px) {
     .about-us{
-        width: 1312px;
+        max-width: 1312px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -36,6 +36,17 @@
         color: #02060a;
         margin-bottom: 40px;
     }
+}
+
+.slide-bg-1 {
+    background-image: -webkit-image-set(
+        url('../img/about-us/slide-1-min-min.jpg') 1x,
+        url('../img/about-us/slide-1@2x-min-min.jpg') 2x
+    );
+    background-image: image-set(
+        url('../img/about-us/slide-1-min-min.jpg') 1x,
+        url('../img/about-us/slide-1@2x-min-min.jpg') 2x
+    );
 }
 
 .slide-bg-2 {
@@ -60,7 +71,41 @@
     );
 }
 
+.slide-bg-4 {
+    background-image: -webkit-image-set(
+        url('../img/about-us/slide-4-min-min.jpg') 1x,
+        url('../img/about-us/slide-4@2x-min-min.jpg') 2x
+    );
+    background-image: image-set(
+        url('../img/about-us/slide-4-min-min.jpg') 1x,
+        url('../img/about-us/slide-4@2x-min-min.jpg') 2x
+    );
+}
+
+.slide-bg-5 {
+    background-image: -webkit-image-set(
+        url('../img/about-us/slide-5-min-min.jpg') 1x,
+        url('../img/about-us/slide-5@2x-min-min.jpg') 2x
+    );
+    background-image: image-set(
+        url('../img/about-us/slide-5-min-min.jpg') 1x,
+        url('../img/about-us/slide-5@2x-min-min.jpg') 2x
+    );
+}
+
 @media only screen and (min-width: 768px) {
+
+    .slide-bg-1 {
+        background-image: -webkit-image-set(
+            url('../img/about-us/slide-1-min-min.jpg') 1x,
+            url('../img/about-us/slide-1@2x-min-min.jpg') 2x
+        );
+        background-image: image-set(
+            url('../img/about-us/slide-1-min-min.jpg') 1x,
+            url('../img/about-us/slide-1@2x-min-min.jpg') 2x
+        );
+    }
+
     .slide-bg-2 {
         background-image: -webkit-image-set(
             url('../img/about-us/slide-2-min-min.jpg') 1x,
@@ -71,6 +116,7 @@
             url('../img/about-us/slide-2@2x-min-min.jpg') 2x
         );
     }
+
     .slide-bg-3 {
         background-image: -webkit-image-set(
             url('../img/about-us/slide-3-min-min.jpg') 1x,
@@ -79,11 +125,44 @@
         background-image: image-set(
             url('../img/about-us/slide-3-min-min.jpg') 1x,
             url('../img/about-us/slide-3@2x-min-min.jpg') 2x
+        );
+    }
+    
+    .slide-bg-4 {
+        background-image: -webkit-image-set(
+            url('../img/about-us/slide-4-min-min.jpg') 1x,
+            url('../img/about-us/slide-4@2x-min-min.jpg') 2x
+        );
+        background-image: image-set(
+            url('../img/about-us/slide-4-min-min.jpg') 1x,
+            url('../img/about-us/slide-4@2x-min-min.jpg') 2x
+        );
+    }
+
+    .slide-bg-5 {
+        background-image: -webkit-image-set(
+            url('../img/about-us/slide-5-min-min.jpg') 1x,
+            url('../img/about-us/slide-5@2x-min-min.jpg') 2x
+        );
+        background-image: image-set(
+            url('../img/about-us/slide-5-min-min.jpg') 1x,
+            url('../img/about-us/slide-5@2x-min-min.jpg') 2x
         );
     }
 }
 
 @media only screen and (min-width: 1440px) {
+    .slide-bg-1 {
+        background-image: -webkit-image-set(
+            url('../img/about-us/slide-1-min-min.jpg') 1x,
+            url('../img/about-us/slide-1@2x-min-min.jpg') 2x
+        );
+        background-image: image-set(
+            url('../img/about-us/slide-1-min-min.jpg') 1x,
+            url('../img/about-us/slide-1@2x-min-min.jpg') 2x
+        );
+    }
+
     .slide-bg-2 {
         background-image: -webkit-image-set(
             url('../img/about-us/slide-2-min-min.jpg') 1x,
@@ -94,6 +173,7 @@
             url('../img/about-us/slide-2@2x-min-min.jpg') 2x
         );
     }
+
     .slide-bg-3 {
         background-image: -webkit-image-set(
             url('../img/about-us/slide-3-min-min.jpg') 1x,
@@ -102,6 +182,28 @@
         background-image: image-set(
             url('../img/about-us/slide-3-min-min.jpg') 1x,
             url('../img/about-us/slide-3@2x-min-min.jpg') 2x
+        );
+    }
+
+    .slide-bg-4 {
+        background-image: -webkit-image-set(
+            url('../img/about-us/slide-4-min-min.jpg') 1x,
+            url('../img/about-us/slide-4@2x-min-min.jpg') 2x
+        );
+        background-image: image-set(
+            url('../img/about-us/slide-4-min-min.jpg') 1x,
+            url('../img/about-us/slide-4@2x-min-min.jpg') 2x
+        );
+    }
+
+    .slide-bg-5 {
+        background-image: -webkit-image-set(
+            url('../img/about-us/slide-5-min-min.jpg') 1x,
+            url('../img/about-us/slide-5@2x-min-min.jpg') 2x
+        );
+        background-image: image-set(
+            url('../img/about-us/slide-5-min-min.jpg') 1x,
+            url('../img/about-us/slide-5@2x-min-min.jpg') 2x
         );
     }
 }
