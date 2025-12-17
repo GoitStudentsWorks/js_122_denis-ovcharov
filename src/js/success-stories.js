@@ -26,9 +26,6 @@ export async function initFeedbackSection() {
     const prevBtn = section.querySelector('.feedback-swiper-button-prev');
     const loader = section.querySelector('.loader');
     
-    // Loader on
-    loader.classList.remove('hideshow');
-
     try {
         // Backend request
         const page = Math.floor(Math.random() * 9) + 1;
@@ -86,9 +83,6 @@ export async function initFeedbackSection() {
             message: err.message,
             position: 'topRight',
         });
-    } finally {
-        // Loader off
-        loader.classList.add('hideshow');
     }
 }
 
