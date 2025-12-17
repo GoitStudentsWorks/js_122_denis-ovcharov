@@ -117,7 +117,7 @@ body.modal-open {
 }
 
 .form-field-textarea {
-  border: 1px solid rgba(255, 255, 255, 0);
+  border: none;
   border-radius: 12px;
   padding: 12px;
   width: 295px;
@@ -146,6 +146,17 @@ body.modal-open {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
+}
+
+.form-submit-btn:hover {
+  background-color: #eee9e3;
+  color: #02060a;
+}
+
+.form-submit-btn:focus {
+  background-color: #c3b49d;
+  color: #02060a;
+  border: #88765c;
 }
 
 @media screen and (min-width: 768px) {
