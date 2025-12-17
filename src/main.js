@@ -1,3 +1,4 @@
+import './js/header';
 import './css/styles.css';
 
 // section success-stories
