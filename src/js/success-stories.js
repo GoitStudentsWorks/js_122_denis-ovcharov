@@ -26,9 +26,6 @@ export async function initFeedbackSection() {
     const prevBtn = section.querySelector('.feedback-swiper-button-prev');
     const loader = section.querySelector('.loader');
     
-    // Loader on
-    loader.classList.remove('hideshow');
-
     try {
         // Backend request
         const page = Math.floor(Math.random() * 9) + 1;
@@ -86,9 +83,6 @@ export async function initFeedbackSection() {
             message: err.message,
             position: 'topRight',
         });
-    } finally {
-        // Loader off
-        loader.classList.add('hideshow');
     }
 }
 
@@ -141,4 +135,22 @@ function clampRating(val) {
     return Math.max(0, Math.min(5, n));
 }
 
+// scroll to top button
+const scrollTopBtn = document.querySelector('.scroll-top');
+const SHOW_AFTER = 300;
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > SHOW_AFTER) {
+        scrollTopBtn.classList.add('is-on');
+    } else {
+        scrollTopBtn.classList.remove('is-on');
+    }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+});
 
