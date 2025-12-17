@@ -10,3 +10,7 @@ document.addEventListener('DOMContentLoaded', initFeedbackSection);
 import { initAboutUsSection } from './js/about-us.js';
 document.addEventListener('DOMContentLoaded', initAboutUsSection);
 // end section about-us
+
+
+import { initPetsList} from './js/pets-list.js';
+document.addEventListener('DOMContentLoaded', initPetsList);
