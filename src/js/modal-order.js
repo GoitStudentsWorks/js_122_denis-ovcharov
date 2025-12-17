@@ -1,5 +1,3 @@
-Denys Ovcharov
-  11:39 PM
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import { petModalLightbox } from './modal-animal-details.js';
