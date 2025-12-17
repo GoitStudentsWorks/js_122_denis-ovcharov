@@ -1,6 +1,5 @@
 import { getCategories, getAnimals } from './api.js';
-import { openModalOrder } from './modal-order.js';
-import { openPetModal } from './modal-animal-details.js';
+
 //!=============================================================
 let currentPage = 1;
 let totalPages = 1;
