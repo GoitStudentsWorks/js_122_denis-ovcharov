@@ -49,7 +49,7 @@
     );
 }
 
-#about-us.slide-bg-2 {
+#about-us .slide-bg-2 {
     background-image: -webkit-image-set(
         url('../img/about-us/slide-2-min-min-mobile.jpg') 1x,
         url('../img/about-us/slide-2@2x-min-min-mobile.jpg') 2x
@@ -196,7 +196,7 @@
         );
     }
 
-    #about-us   .slide-bg-5 {
+    #about-us  .slide-bg-5 {
         background-image: -webkit-image-set(
             url('../img/about-us/slide-5-min-min.jpg') 1x,
             url('../img/about-us/slide-5@2x-min-min.jpg') 2x
