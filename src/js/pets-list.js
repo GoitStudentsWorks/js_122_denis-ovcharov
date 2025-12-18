@@ -152,7 +152,7 @@ export function scroll() {
   if (!firstCard) return;
   const itemHeight = firstCard.getBoundingClientRect().height;
   window.scrollBy({
-    top: itemHeight * 2,
+    top: itemHeight,
     left: 0,
     behavior: 'smooth',
   });
@@ -189,12 +189,21 @@ document.addEventListener('click', e => {
   }
 });
 //!=======================================================================================
-export function checkScreenWidth() {
-  if (window.matchMedia('(min-width: 1440px)').matches) {
-    limit = 9;
-  } else {
-    limit = 8;
-  };
-  console.log('limit =', limit);
+const mediaQuery = window.matchMedia('(min-width: 1440px)');
+
+function handleMediaChange(e) {
+  const newLimit = e.matches ? 9 : 8;
+  if (limit !== newLimit) {          // якщо ліміт змінився
+    limit = newLimit;
+    currentPage = 1;
+    allAnimals = [];
+    refs.petsList.innerHTML = '';    // очищаємо старі картки
+    loadAnimals();                   // новий запит з новим limit
+  }
 }
-window.addEventListener('resize', checkScreenWidth);
+
+// Слухаємо зміни ширини
+mediaQuery.addEventListener('change', handleMediaChange);
+
+// Початкове встановлення
+handleMediaChange(mediaQuery);
