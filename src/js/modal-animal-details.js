@@ -7,7 +7,7 @@ export function openPetModal(animal) {
       <div class="pet-modal">
         <button class="modal-close-btn">
           <svg class="icon-close-btn" width="18" height="18">
-            <use href="../img/sprite.svg#icon-close-btn"></use>
+            <use href="./img/sprite.svg#icon-close-btn"></use>
           </svg>
         </button>
         <img class="pet-modal-img"src="${animal.image}" alt="${animal.name}">
