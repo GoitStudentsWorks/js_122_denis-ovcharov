@@ -1,6 +1,6 @@
 import './js/header';
 import './css/styles.css';
-
+checkScreenWidth();
 // section success-stories
 import { initFeedbackSection } from './js/success-stories.js';
 document.addEventListener('DOMContentLoaded', initFeedbackSection);
@@ -12,5 +12,5 @@ document.addEventListener('DOMContentLoaded', initAboutUsSection);
 // end section about-us
 
 
-import { initPetsList} from './js/pets-list.js';
+import { checkScreenWidth, initPetsList} from './js/pets-list.js';
 document.addEventListener('DOMContentLoaded', initPetsList);

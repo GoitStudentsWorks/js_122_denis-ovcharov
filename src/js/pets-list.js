@@ -1,5 +1,6 @@
 import { getCategories, getAnimals } from './api.js';
-
+import { openPetModal } from './modal-animal-details.js';
+import { openModalOrder } from './modal-order.js';
 //!=============================================================
 let currentPage = 1;
 let totalPages = 1;
@@ -188,3 +189,12 @@ document.addEventListener('click', e => {
   }
 });
 //!=======================================================================================
+export function checkScreenWidth() {
+  if (window.matchMedia('(min-width: 1440px)').matches) {
+    limit = 9;
+  } else {
+    limit = 8;
+  };
+  console.log('limit =', limit);
+}
+window.addEventListener('resize', checkScreenWidth);
