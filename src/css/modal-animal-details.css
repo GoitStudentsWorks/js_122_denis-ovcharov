@@ -1,0 +1,214 @@
+.basicLightbox.basicLightbox--visible {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.pet-modal {
+    position: relative;
+    border-radius: 8px;
+    padding: 64px 20px;
+    width: 335px;
+    background: #f6f4f1;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.icon-close-btn {
+    transition: stroke 250ms ease;
+    stroke-width: 1px;
+    stroke: #02060a;
+    width: 14px;
+    height: 14px;
+    transition: stroke 250ms ease;
+}
+
+.icon-close-btn:hover {
+    stroke: #5e4c32;
+}
+
+.pet-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.pet-modal-image {
+    width: 295px;
+    height: 295px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 32px;
+
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    max-width: 576px;
+}
+
+.pet-type-modal {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #02060a;
+    margin-bottom: 8px;
+}
+
+.pet-name-modal {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #02060a;
+    margin-bottom: 8px;
+}
+
+.pet-meta-modal {
+    display: flex;
+    gap: 16px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #02060a;
+    margin-bottom: 24px;
+}
+
+.pet-section {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #02060a;
+    margin-bottom: 8px;
+}
+
+.pet-description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #02060a;
+    margin-bottom: 24px !important;
+}
+
+.pet-modal-btn {
+    border: 1px solid #88765c;
+    border-radius: 8px;
+    padding: 12px 24px;
+    width: 295px;
+    height: 45px;
+    background-color: #88765c;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #fff;
+    display: block;
+    margin: 0px auto;
+    transition: background-color 250ms ease;
+}
+
+.pet-modal-btn:hover,
+.pet-modal-btn:focus {
+    border: 1px solid #88765c;
+    background-color: #eee9e3;
+    color: #02060a;
+}
+
+.pet-modal-btn:active {
+    border: 1px solid #88765c;
+    box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03), inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+    background-color: #eee9e3;
+    color: #02060a;
+}
+
+.pet-modal-btn:disabled {
+    border: 1px solid #88765c;
+    background-color: #88765c;
+    opacity: 0.3;
+}
+
+@media (min-width: 768px) {
+    .pet-modal {
+        padding: 64px 32px;
+        width: 704px;
+        display: flex;
+        gap: 32px;
+    }
+
+    .pet-modal-image {
+        width: 304px;
+        height: 450px;
+    }
+
+    .description {
+        order: 2;
+    }
+
+    .health {
+        order: 3;
+    }
+
+    .behavior {
+        order: 4;
+    }
+
+    .pet-modal-btn {
+        width: 304px;
+        margin-bottom: 24px;
+        order: 1;
+    }
+}
+
+@media (min-width: 1440px) {
+    .pet-modal {
+        width: 1312px;
+        padding: 64px;
+    }
+
+    .pet-modal-image {
+        width: 576px;
+    }
+
+    .pet-type-modal {
+        font-size: 14px;
+    }
+
+    .pet-name-modal {
+        font-size: 40px;
+    }
+
+    .pet-meta-modal {
+        font-size: 14px;
+    }
+
+    .pet-section {
+        font-size: 16px;
+    }
+
+    .pet-description {
+        font-size: 16px;
+    }
+
+    .description {
+        order: 3;
+    }
+
+    .health {
+        order: 1;
+    }
+
+    .behavior {
+        order: 2;
+    }
+
+    .pet-modal-btn {
+        width: 576px;
+        height: 48px;
+        order: 4;
+        margin: 0;
+    }
+}
