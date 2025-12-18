@@ -3,83 +3,11 @@
 }
 
 .pet-modal {
-    background-color: #F6F4F1;
-    padding: 64px 20px;
-    border-radius: 8px;
-    max-width: 335px;
-    overflow: auto;
-    max-height: 100vh;
     position: relative;
-}
-
-.modal-close-btn {
-    border: none;
-    background-color: transparent;
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    padding: 6px;
-}
-
-.pet-modal-species {
-    margin-bottom: 8px;
-}
-
-.pet-modal-img {
     border-radius: 8px;
-    margin: 0 auto;
-    margin-bottom: 32px;
-}
-
-.pet-modal-title {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin-bottom: 8px;
-}
-
-.pet-info-wrap {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
-}
-
-.pet-modal-btn {
-    width: 295px;
-    height: 45px;
-    border-radius: 8px;
-    border: none;
-    background-color: #88765C;
-    font-family: "IBM Plex Sans", sans-serif;
-    font-size: 14px;
-    color: #fff;
-    transition: background-color 250ms ease;
-}
-
-.pet-modal-btn:hover,
-.pet-modal-btn:focus {
-    color: #02060A;
-    background-color: #C3B49D;
-    outline: 1px solid #02060A;
-}
-
-.pet-modal-info {
-    font-size: 14px;
-}
-
-.pet-info-title {
-    font-weight: 600;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-.pet-info-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-bottom: 24px;
+    padding: 64px 20px;
+    width: 335px;
+    background: #f6f4f1;
 }
 
 .icon-close-btn {
@@ -95,49 +23,187 @@
     stroke: #5e4c32;
 }
 
-@media screen and (min-width: 768px) {
-    .pet-modal {
-        padding: 64px 32px;
-        max-width: 704px;
-        display: flex;
-        align-items: flex-start;
-        gap: 32px;
-    }
-    
-    .pet-modal-img {
-        width: 304px;
-        height: 450px;
-        object-fit: cover;
-        margin: 0;
-    }
-
-    .pet-modal-btn {
-        width: 304px;
-        height: 53px;
-        
-    }
-
+.pet-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    padding: 0;
 }
 
-@media screen and (min-width: 1440px) {
+.pet-modal-image {
+    width: 295px;
+    height: 295px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+}
+
+.pet-type {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #02060a;
+    margin-bottom: 8px;
+}
+
+.pet-name {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #02060a;
+    margin-bottom: 8px;
+}
+
+.pet-meta {
+    display: flex;
+    gap: 16px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #02060a;
+    margin-bottom: 24px;
+}
+
+.pet-section {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #02060a;
+    margin-bottom: 8px;
+}
+
+.pet-description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #02060a;
+    margin-bottom: 24px !important;
+}
+
+.pet-modal-btn {
+    border: 1px solid #88765c;
+    border-radius: 8px;
+    padding: 12px 24px;
+    width: 295px;
+    height: 45px;
+    background-color: #88765c;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #fff;
+    display: block;
+    margin: 0px auto;
+    transition: background-color 250ms ease;
+}
+
+.pet-modal-btn:hover,
+.pet-modal-btn:focus {
+    border: 1px solid #88765c;
+    background-color: #eee9e3;
+    color: #02060a;
+}
+
+.pet-modal-btn:active {
+    border: 1px solid #88765c;
+    box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03), inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+    background-color: #eee9e3;
+    color: #02060a;
+}
+
+.pet-modal-btn:disabled {
+    border: 1px solid #88765c;
+    background-color: #88765c;
+    opacity: 0.3;
+}
+
+@media (min-width: 768px) {
     .pet-modal {
-        padding: 64px 64px;
-        max-width: 1312px;
+        padding: 64px 32px;
+        width: 704px;
         display: flex;
-        align-items: flex-start;
         gap: 32px;
     }
 
-    .pet-modal-img {
+    .pet-modal-image {
+        width: 304px;
+        height: 450px;
+    }
+
+    .description {
+        order: 2;
+    }
+
+    .health {
+        order: 3;
+    }
+
+    .behavior {
+        order: 4;
+    }
+
+    .pet-modal-btn {
+        width: 304px;
+        margin-bottom: 24px;
+        order: 1;
+    }
+}
+
+@media (min-width: 1158px) {
+    .pet-modal {
+        width: 1312px;
+        padding: 64px;
+    }
+
+    .pet-modal-image {
         width: 576px;
     }
 
-    .pet-modal-decor {
-        width: 576px;
+    .pet-type {
+        font-size: 14px;
     }
-    
+
+    .pet-name {
+        font-size: 40px;
+    }
+
+    .pet-meta {
+        font-size: 14px;
+    }
+
+    .pet-section {
+        font-size: 16px;
+    }
+
+    .pet-description {
+        font-size: 16px;
+    }
+
+    .description {
+        order: 3;
+    }
+
+    .health {
+        order: 1;
+    }
+
+    .behavior {
+        order: 2;
+    }
+
     .pet-modal-btn {
         width: 576px;
-        height: 56px;    
-    }   
+        height: 48px;
+        order: 4;
+        margin: 0;
+    }
 }
