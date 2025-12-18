@@ -1,5 +1,6 @@
 import { getCategories, getAnimals } from './api.js';
-
+import { openPetModal } from './modal-animal-details.js';
+import { openModalOrder } from './modal-order.js';
 //!=============================================================
 let currentPage = 1;
 let totalPages = 1;
@@ -151,7 +152,7 @@ export function scroll() {
   if (!firstCard) return;
   const itemHeight = firstCard.getBoundingClientRect().height;
   window.scrollBy({
-    top: itemHeight * 2,
+    top: itemHeight,
     left: 0,
     behavior: 'smooth',
   });
@@ -188,3 +189,20 @@ document.addEventListener('click', e => {
   }
 });
 //!=======================================================================================
+const mediaQuery = window.matchMedia('(min-width: 1440px)');
+
+function handleMediaChange(e) {
+  const newLimit = e.matches ? 9 : 8;
+  if (limit !== newLimit) {
+    limit = newLimit;
+    currentPage = 1;
+    allAnimals = [];
+    refs.petsList.innerHTML = '';
+    loadAnimals();
+  }
+}
+
+
+mediaQuery.addEventListener('change', handleMediaChange);
+
+handleMediaChange(mediaQuery);

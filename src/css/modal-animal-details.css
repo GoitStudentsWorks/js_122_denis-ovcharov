@@ -1,0 +1,91 @@
+.basicLightbox.basicLightbox--visible {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.pet-modal {
+    background-color: #F6F4F1;
+    padding: 64px 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    max-width: 335px;
+    overflow: auto;
+    max-height: 100vh;
+    position: relative;
+}
+
+.modal-close-btn {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 6px;
+}
+
+.pet-modal-species {
+    margin-bottom: 8px;
+}
+
+.pet-modal-img {
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-bottom: 32px;
+}
+
+.pet-modal-title {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+}
+
+.pet-info-wrap {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.pet-modal-btn {
+    width: 100%;
+    height: 45px;
+    border-radius: 8px;
+    border: none;
+    background-color: #88765C;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+    color: #fff;
+    transition: background-color 250ms ease;
+}
+
+.pet-modal-btn:hover {
+    color: #02060A;
+    background-color: #C3B49D;
+    outline: 1px solid #02060A;
+}
+
+.pet-modal-info {
+    font-size: 14px;
+}
+
+.pet-info-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.pet-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.icon-close-btn {
+    transition: fill 250ms ease;
+}
+
+.icon-close-btn:hover {
+    fill: #5e4c32;
+}

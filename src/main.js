@@ -13,5 +13,5 @@ document.addEventListener('DOMContentLoaded', initAboutUsSection);
 // end section about-us
 
 
-import { initPetsList} from './js/pets-list.js';
+import { initPetsList } from './js/pets-list.js';
 document.addEventListener('DOMContentLoaded', initPetsList);
