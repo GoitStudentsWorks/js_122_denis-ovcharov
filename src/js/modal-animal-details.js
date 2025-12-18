@@ -15,6 +15,7 @@ export function openPetModal(animal) {
           </svg>
         </button>
         <img class="pet-modal-img"src="${animal.image}" alt="${animal.name}">
+        
         <p class="pet-modal-species">${animal.species}</p>
         <h3 class="pet-modal-title">${animal.name}</h3>
         <div class="pet-info-wrap">

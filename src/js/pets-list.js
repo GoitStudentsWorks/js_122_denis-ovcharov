@@ -192,8 +192,17 @@ document.addEventListener('click', e => {
 //!=======================================================================================
 const mediaQuery = window.matchMedia('(min-width: 1440px)');
 
+let initialized = false;
+
 function handleMediaChange(e) {
   const newLimit = e.matches ? 9 : 8;
+
+  if (!initialized) {
+    initialized = true;
+    limit = newLimit;
+    return;
+  }
+
   if (limit !== newLimit) {
     limit = newLimit;
     currentPage = 1;

@@ -34,11 +34,14 @@
 }
 
 .modal-order-icon {
-  fill: #fff;
+  transition: stroke 250ms ease;
   stroke-width: 1px;
   stroke: #02060a;
   width: 14px;
   height: 14px;
+}
+.modal-order-close-btn:hover .modal-order-icon {
+  stroke: #5e4c32;
 }
 
 .modal-order-title {
