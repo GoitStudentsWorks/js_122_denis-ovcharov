@@ -83,11 +83,16 @@
 }
 
 .icon-close-btn {
-    transition: fill 250ms ease;
+    transition: stroke 250ms ease;
+    stroke-width: 1px;
+    stroke: #02060a;
+    width: 14px;
+    height: 14px;
+    transition: stroke 250ms ease;
 }
 
 .icon-close-btn:hover {
-    fill: #5e4c32;
+    stroke: #5e4c32;
 }
 
 @media screen and (min-width: 768px) {
