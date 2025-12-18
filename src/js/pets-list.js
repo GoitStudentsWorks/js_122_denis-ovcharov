@@ -193,17 +193,16 @@ const mediaQuery = window.matchMedia('(min-width: 1440px)');
 
 function handleMediaChange(e) {
   const newLimit = e.matches ? 9 : 8;
-  if (limit !== newLimit) {          // якщо ліміт змінився
+  if (limit !== newLimit) {
     limit = newLimit;
     currentPage = 1;
     allAnimals = [];
-    refs.petsList.innerHTML = '';    // очищаємо старі картки
-    loadAnimals();                   // новий запит з новим limit
+    refs.petsList.innerHTML = '';
+    loadAnimals();
   }
 }
 
-// Слухаємо зміни ширини
+
 mediaQuery.addEventListener('change', handleMediaChange);
 
-// Початкове встановлення
 handleMediaChange(mediaQuery);
