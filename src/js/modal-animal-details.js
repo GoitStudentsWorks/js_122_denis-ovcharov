@@ -15,26 +15,28 @@ export function openPetModal(animal) {
           </svg>
         </button>
         <img class="pet-modal-img"src="${animal.image}" alt="${animal.name}">
-        <p class="pet-modal-species">${animal.species}</p>
-        <h3 class="pet-modal-title">${animal.name}</h3>
-        <div class="pet-info-wrap">
-          <p class="pet-modal-age">${animal.age}</p>
-          <p class="pet-modal-gender">${animal.gender}</p>
+        <div class="pet-modal-decor">
+          <p class="pet-modal-species">${animal.species}</p>
+          <h3 class="pet-modal-title">${animal.name}</h3>
+          <div class="pet-info-wrap">
+            <p class="pet-modal-age">${animal.age}</p>
+            <p class="pet-modal-gender">${animal.gender}</p>
+          </div>
+          <ul class="pet-info-list">
+            <li>
+              <h3 class="pet-info-title">Опис:</h3>
+              <p class="pet-modal-info">${animal.description}</p>
+            </li>
+            <li><h3 class="pet-info-title">Здоров'я:</h3>
+              <p class="pet-modal-info">${animal.healthStatus}</p>
+            </li>
+            <li>
+              <h3 class="pet-info-title">Поведінка:</h3>
+              <p class="pet-modal-info">${animal.behavior}</p>
+            </li>
+          </ul>
+          <button class="pet-modal-btn" data-animal-id="${animal._id}">Взяти додому</button>
         </div>
-        <ul class="pet-info-list">
-          <li>
-            <h3 class="pet-info-title">Опис:</h3>
-            <p class="pet-modal-info">${animal.description}</p>
-          </li>
-          <li><h3 class="pet-info-title">Здоров'я:</h3>
-            <p class="pet-modal-info">${animal.healthStatus}</p>
-          </li>
-          <li>
-            <h3 class="pet-info-title">Поведінка:</h3>
-            <p class="pet-modal-info">${animal.behavior}</p>
-          </li>
-        </ul>
-        <button class="pet-modal-btn"  data-animal-id="${animal._id}">Взяти додому</button>
       </div>
     `,
     {
