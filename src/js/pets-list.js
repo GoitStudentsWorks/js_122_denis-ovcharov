@@ -175,10 +175,11 @@ refs.petsFilters.addEventListener('click', e => {
 });
 //!=================================================================================
 document.addEventListener('click', e => {
-  if (e.target.classList.contains('pet-modal-btn')) {
-    openModalOrder();
-  }
+  const btn = e.target.closest('.pet-modal-btn');
+  if (!btn) return;
+  openModalOrder(btn.dataset.animalId);
 });
+
 //!======================================================================================
 document.addEventListener('click', e => {
   if (e.target.classList.contains('pet-details-btn')) {
@@ -201,7 +202,6 @@ function handleMediaChange(e) {
     loadAnimals();
   }
 }
-
 
 mediaQuery.addEventListener('change', handleMediaChange);
 
