@@ -7,13 +7,13 @@ const faqData = [
   question: "Я мрію про пухнастика! Що мені потрібно зробити, щоб забрати хвостика додому?",
   answer: `
     <p>Це чудово, що ви готові подарувати дім одному з наших підопічних! Ми дуже раді будемо вам у цьому допомогти. Процес «усиновлення» у нас простий та зрозумілий:</p>
-    <ul class="no-bullets">
-      <li>1. Оберіть друга: Придивіться до наших хвостиків у розділі «Знайди друга».</li>
-      <li>2. Залиште заявку: Натисніть кнопку «Взяти додому» та заповніть коротку анкету.</li>
-      <li>3. Поговоріть з куратором: Волонтер зателефонує вам та відповість на всі питання.</li>
-      <li>4. Приїжджайте знайомитись: Ми домовимось про зустріч у притулку.</li>
-      <li>5. Дорога додому:Після підписання договору ваш новий друг поїде додому.</li>
-    </class=>
+    <ol class="no-bullets">
+      <li> Оберіть друга: Придивіться до наших хвостиків у розділі «Знайди друга».</li>
+      <li> Залиште заявку: Натисніть кнопку «Взяти додому» та заповніть коротку анкету.</li>
+      <li> Поговоріть з куратором: Волонтер зателефонує вам та відповість на всі питання.</li>
+      <li> Приїжджайте знайомитись: Ми домовимось про зустріч у притулку.</li>
+      <li> Дорога додому:Після підписання договору ваш новий друг поїде додому.</li>
+   </ol>
   `
 },
 
@@ -69,35 +69,43 @@ const faqData = [
 
 const container = document.getElementById("faqAccordion");
 
+// Генерация HTML FAQ
 container.innerHTML = faqData
-  .map(
-    item => `
-  <div class="ac">
-    <h3 class="ac-header">
-      <button type="button" class="ac-trigger">
-        <span>${item.question}</span>
-        <svg class="faq__icon" viewBox="0 0 24 24">
-          <path d="M12 5v14M5 12h14"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"/>
-        </svg>
-      </button>
-    </h3>
-
-    <div class="ac-panel">
-      <div class="ac-text">
-        ${item.answer}
+  .map(item => `
+    <div class="ac">
+      <h3 class="ac-header">
+        <button type="button" class="ac-trigger">
+          <span>${item.question}</span>
+          <svg class="faq__icon" viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12h14"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"/>
+          </svg>
+        </button>
+      </h3>
+      <div class="ac-panel">
+        <div class="ac-text">${item.answer}</div>
       </div>
     </div>
-  </div>
-`
-  )
+  `)
   .join("");
 
-
-new Accordion("#faqAccordion", {
+// Инициализация Accordion-js
+const accordion = new Accordion("#faqAccordion", {
   duration: 300,
   showMultiple: false
 });
 
+// Дополнительно: точная высота панели для плавного раскрытия
+document.querySelectorAll('.ac-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const panel = trigger.parentElement.nextElementSibling;
+
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+});

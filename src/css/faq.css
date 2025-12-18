@@ -1,7 +1,4 @@
 /* ====== FAQ Section ====== */
-.container {
-  background-color: #f6f4f1;
-}
 
 .faq {
   padding: 64px 0;
@@ -29,7 +26,10 @@
   background: transparent;
 }
 /* ====== Accordion ====== */
-
+.ac .ac-trigger,
+.ac .ac-panel {
+  border: none;
+}
 .ac {
   background-color: #eee9e3 !important;
   margin-bottom: 16px;
@@ -45,34 +45,41 @@
 
 /* ====== Trigger ====== */
 .ac-trigger {
-  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 704px;
   box-sizing: border-box;
-
-  position: relative;
-
-  display: block;
-  width: 100%;
-  min-height: 72px;
-
-  padding: 20px 24px 20px 20px;
-
+  padding: 0 24px;
   cursor: pointer;
+  position: relative;
 }
 
-/* Текст вопроса */
+.ac-trigger.large {
+  height: 88px;
+}
+.ac-trigger.small {
+  height: 64px;
+}
 .ac-trigger span {
-  display: block;
-
-  font-size: 16px;
-  line-height: 1.4;
-  color: #02060a;
+  flex: 1;
   word-break: break-word;
-
-  padding: 20px 24px 20px 24px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-right: 24px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #02060a;
+  display: flex;
+  align-items: center;
 }
 
-.faq__icon-btn {
-  display: none;
+.faq__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+  position: absolute;
 }
 .ac .ac-trigger::after {
   display: none !important;
@@ -91,7 +98,7 @@
 
   transition: transform 0.3s ease;
 }
-/* Поворот SVG в крестик при открытии */
+
 .ac.is-active .faq__icon {
   transform: rotate(45deg);
 }
@@ -107,10 +114,8 @@
 
 .ac.is-active .ac-panel {
   padding: 16px 24px 24px;
-  max-height: 1000px;
 }
 
-/* Текст ответа */
 .ac-text {
   font-size: 14px;
   line-height: 1.6;
@@ -125,8 +130,10 @@
   padding-left: 18px;
   margin: 12px 0 0;
 }
-
-/* Списки */
+.ac-text ol li::before {
+  content: none;
+  position: static;
+}
 .ac-text ul {
   padding-left: 18px;
   margin: 12px 0 0;
@@ -140,11 +147,6 @@
   position: absolute;
   left: 0;
   top: 0;
-}
-/* ====== Убираем дефолтные стили accordion-js ====== */
-.ac .ac-trigger,
-.ac .ac-panel {
-  border: none;
 }
 
 /* ====== Responsive ====== */
