@@ -9,6 +9,7 @@
     background-position: center center;
     background-size: cover;
     max-width: 375px;
+    margin: 0 auto;
 }
 
 .hero .container {
