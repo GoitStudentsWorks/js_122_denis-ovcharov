@@ -47,8 +47,13 @@ export function openPetModal(animal) {
   `,
     {
       onShow: instance => {
+        
+        const petModalScroll = document.querySelector('.basicLightbox .pet-modal');
+        if (petModalScroll) {
+          petModalScroll.style.overflow = 'auto'
+        }
+        
         document.body.style.overflow = 'hidden';
-
         instance
           .element()
           .querySelector('.pet-modal-close')
