@@ -18,11 +18,7 @@ export function openPetModal(animal) {
         <div class="pet-modal-decor">
         <p class="pet-modal-species">${animal.species}</p>
         <h3 class="pet-modal-title">${animal.name}</h3>
-        <div class="pet-info-wrap">
-          <p class="pet-modal-age">${animal.age}</p>
-          <p class="pet-modal-gender">${animal.gender}</p>
-          <p class="pet-modal-species">${animal.species}</p>
-          <h3 class="pet-modal-title">${animal.name}</h3>
+
           <div class="pet-info-wrap">
             <p class="pet-modal-age">${animal.age}</p>
             <p class="pet-modal-gender">${animal.gender}</p>
