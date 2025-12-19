@@ -1,7 +1,4 @@
 .hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding-top: 64px;
     padding-bottom: 115px;
     background-image: url(../img/hero/hero-mob-min.jpg);
@@ -10,6 +7,9 @@
     background-size: cover;
     max-width: 375px;
     margin: 0 auto;
+}
+.hero-wrap {
+    max-width: 335px;
 }
 
 .hero .container {
@@ -71,6 +71,9 @@
     .hero-text {
         max-width: 512px;
     }
+    .hero-wrap {
+        max-width: 704px;
+    }
 }
 
 @media screen and (min-width: 768px) and (min-resolution: 2dppx) {
@@ -95,6 +98,10 @@
     .hero-link {
         font-size: 16px;
     }
+    .hero-wrap {
+        margin-left: 0;
+    }
+    
 }
 @media screen and (min-width: 1440px) and (min-resolution: 2dppx) {
     .hero {

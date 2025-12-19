@@ -7,9 +7,9 @@
   min-height: 763px;
   max-width: 768px;
   border-radius: 8px;
-  transform: translate(-50%, -50%);
   background-color: #f6f4f1;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-50%, -50%) translateZ(0);
+  will-change: transform;
 }
 
 .modal-order-close-btn {
@@ -61,6 +61,7 @@
   flex-wrap: wrap;
   gap: 24px;
   margin-top: 48px;
+  box-sizing: border-box;
 }
 
 .form-field-wrapper {
@@ -84,23 +85,21 @@
   padding: 8px 12px;
   width: 295px;
   height: 37px;
-
   background-color: rgba(2, 6, 10, 0.05);
   outline: transparent;
 }
 
 .form-field-text-input:focus {
-  border: 1px solid #88765c;
+  outline: 1px solid #88765c;
   background-color: #eee9e3;
 }
 
 .form-field-textarea {
-  border: none;
+  border: 1px solid transparent;
   border-radius: 12px;
   padding: 12px;
   width: 295px;
   height: 180px;
-
   background-color: rgba(2, 6, 10, 0.05);
   outline: transparent;
 }
@@ -113,7 +112,7 @@
 }
 
 .form-field-textarea:focus {
-  border: 1px solid #c3b49d;
+  outline: 1px solid #c3b49d;
   background-color: #eee9e3;
 }
 

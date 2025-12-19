@@ -136,13 +136,6 @@
   border-radius: 10px;
 }
 
-.line {
-  border: 1px solid rgba(2, 6, 10, 0.15);
-  width: 335px;
-  height: 0px;
-  margin-top: 80px;
-}
-
 /* ===== COPYRIGHT ===== */
 .footer-copy {
   font-family: var(--font-family, 'IBM Plex Sans', sans-serif);
@@ -152,7 +145,11 @@
   text-align: center;
   color: var(--color-neutral-darkest, #02060a);
   white-space: nowrap;
-  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(2, 6, 10, 0.15);
+  max-width: 335px;
+  width: 100%;
+  margin-top: 80px;
 }
 
 /* ===== TABLET 768+ ===== */
@@ -175,6 +172,9 @@
   .line {
     width: 704px;
   }
+  .footer-copy {
+    max-width: 704px;
+  }
 }
 
 
@@ -195,5 +195,8 @@
 
   .line {
     width: 1312px;
+  }
+  .footer-copy {
+     max-width: 1312px;
   }
 }
