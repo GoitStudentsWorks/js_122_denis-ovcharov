@@ -15,8 +15,7 @@ openBtn.addEventListener('click', () => {
 });
 
 // Закриття меню при кліку на пункт меню
-const menuLinks = document.querySelectorAll('.nav-link, .nav-btn-link'); 
-
+const menuLinks = document.querySelectorAll('.nav-link');
 menuLinks.forEach(link => {
   link.addEventListener('click', () => {
     menuSection.classList.remove('is-open');
@@ -24,16 +23,9 @@ menuLinks.forEach(link => {
   });
 });
 
-
-// Закриття меню коли екран більше 1440px 
-
-function handleResize() {
-  if (window.innerWidth >= 1440) {
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menuSection.classList.contains('is-open')) {
     menuSection.classList.remove('is-open');
     document.body.style.overflow = 'visible';
   }
-}
-handleResize();
-
-
-window.addEventListener('resize', handleResize);
+});
