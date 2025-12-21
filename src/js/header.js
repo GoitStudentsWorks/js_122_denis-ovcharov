@@ -20,12 +20,8 @@ closeBtn.addEventListener('click', closeMenu);
 // Відкриття по бургер кнопці
 openBtn.addEventListener('click', openMenu);
 
-// Закриття по звичайним пунктам меню
+// Закриття по пунктам меню
 menuLinks.forEach(link => link.addEventListener('click', closeMenu));
 
 // Escape закриває меню
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && menuSection.classList.contains('is-open')) {
-    closeMenu();
-  }
-});
+document.addEventListener('keydown', closeMenu);
