@@ -1,7 +1,7 @@
 const menuSection = document.getElementById('mobile-menu');
 const closeBtn = document.getElementById('data-burger-close');
 const openBtn = document.getElementById('data-burger-open');
-const menuLinks = document.querySelectorAll('.mobile-nav-list a');
+const menuLinks = document.querySelectorAll('.mobile-nav-list');
 
 
 function closeMenu() {
@@ -21,7 +21,7 @@ closeBtn.addEventListener('click', closeMenu);
 openBtn.addEventListener('click', openMenu);
 
 // Закриття по пунктам меню
-menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+menuLinks.addEventListener('click', closeMenu);
 
 // Escape закриває меню
 document.addEventListener('keydown', closeMenu);
