@@ -1,31 +1,31 @@
 const menuSection = document.getElementById('mobile-menu');
 const closeBtn = document.getElementById('data-burger-close');
+const openBtn = document.getElementById('data-burger-open');
+const menuLinks = document.querySelectorAll('.mobile-nav-list a');
 
-// Закриття меню по кнопці
-closeBtn.addEventListener('click', () => {
+
+function closeMenu() {
   menuSection.classList.remove('is-open');
   document.body.style.overflow = 'visible';
-});
+}
 
-// Відкриття меню по бургер-кнопці
-const openBtn = document.getElementById('data-burger-open');
-openBtn.addEventListener('click', () => {
+function openMenu() {
   menuSection.classList.add('is-open');
   document.body.style.overflow = 'hidden';
-});
+}
 
-// Закриття меню при кліку на пункт меню
-const menuLinks = document.querySelectorAll('.nav-link');
-menuLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    menuSection.classList.remove('is-open');
-    document.body.style.overflow = 'visible';
-  });
-});
+// Закриття по кнопці
+closeBtn.addEventListener('click', closeMenu);
 
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && menuSection.classList.contains('is-open')) {
-    menuSection.classList.remove('is-open');
-    document.body.style.overflow = 'visible';
+// Відкриття по бургер кнопці
+openBtn.addEventListener('click', openMenu);
+
+// Закриття по звичайним пунктам меню
+menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+// Escape закриває меню
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menuSection.classList.contains('is-open')) {
+    closeMenu();
   }
 });

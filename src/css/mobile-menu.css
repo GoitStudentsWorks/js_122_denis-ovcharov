@@ -32,7 +32,7 @@
 
 .mobile-menu-top {
     display: flex;
-    padding-top: 7px;
+    align-items: center;
     justify-content: space-between;
 }
 
