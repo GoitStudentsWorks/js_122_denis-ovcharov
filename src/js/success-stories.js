@@ -116,7 +116,7 @@ function renderFeedbackSlide(item) {
     return `
         <div class="swiper-slide">
             <div class="feedback-card">
-                <div class="${ratingClass}" aria-label="Rating: ${rating} out of 5">
+                <div class="${ratingClass}">
                     <div class="star-container">
                         ${stars}
                     </div>

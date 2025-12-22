@@ -1,4 +1,4 @@
-.pets .container {
+.pets {
   padding-top: 64px;
   padding-bottom: 32px;
 }
@@ -166,15 +166,20 @@
   }
   .pet-card {
     max-width: 336px;
+    width: calc((100% - 32px) / 2);
   }
 
 }
 @media screen and (min-width: 1440px) {
+  .pets {
+    padding-top: 80px;
+  }
   .pets-filters {
     max-width: 1280px;
   }
   .pet-card {
     max-width: 416px;
+    width: calc((100% - 64px) / 3);
   }
   .pet-img {
      max-width: 392px;

@@ -104,6 +104,10 @@ export async function loadAnimals({ reset = false } = {}) {
       if (!reset) currentPage++;
       refs.pagination.innerHTML = '';
     } else {
+      iziToast.error({
+        message:'Список тварин закінчився =(',
+        position:'topRight'
+      })
       hideLoadMoreButton();
       renderPagination();
     }

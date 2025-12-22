@@ -1,31 +1,36 @@
 const menuSection = document.getElementById('mobile-menu');
 const closeBtn = document.getElementById('data-burger-close');
 const openBtn = document.getElementById('data-burger-open');
-const menuLinks = document.querySelectorAll('.mobile-nav-list a');
+const menu = document.querySelector('.mobile-menu');
 
+
+
+function closeMenuOnEsc(e) {
+  if (e.key === 'Escape' && menuSection.classList.contains('is-open')) {
+    closeMenu();
+  }
+}
+
+function menuLinkClick(e) {
+  if (e.target.closest('a')) {
+    closeMenu();
+  }
+}
 
 function closeMenu() {
   menuSection.classList.remove('is-open');
   document.body.style.overflow = 'visible';
+  document.removeEventListener('keydown', closeMenuOnEsc);
+  menu.removeEventListener('click', menuLinkClick);
 }
 
 function openMenu() {
   menuSection.classList.add('is-open');
   document.body.style.overflow = 'hidden';
+  document.addEventListener('keydown', closeMenuOnEsc);
+  menu.addEventListener('click', menuLinkClick);
 }
 
-// Закриття по кнопці
+
 closeBtn.addEventListener('click', closeMenu);
-
-// Відкриття по бургер кнопці
 openBtn.addEventListener('click', openMenu);
-
-// Закриття по звичайним пунктам меню
-menuLinks.forEach(link => link.addEventListener('click', closeMenu));
-
-// Escape закриває меню
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && menuSection.classList.contains('is-open')) {
-    closeMenu();
-  }
-});
