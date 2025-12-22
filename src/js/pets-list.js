@@ -136,6 +136,11 @@ function renderPagination() {
     </svg>
   `;
   prev.disabled = currentPage === 1;
+  
+  if (prev.disabled) {
+    prev.classList.add('btn-is-disabled');
+  }
+  
   prev.addEventListener('click', () => {
     currentPage--;
     loadAnimals({ reset: true });
@@ -196,6 +201,9 @@ function renderPagination() {
     </svg>
   `;
   next.disabled = currentPage === totalPages;
+  if (next.disabled) {
+    next.classList.add('btn-is-disabled')
+  }
   next.addEventListener('click', () => {
     currentPage++;
     loadAnimals({ reset: true });
