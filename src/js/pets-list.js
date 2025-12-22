@@ -1,3 +1,4 @@
+import iziToast from 'izitoast';
 import { getCategories, getAnimals } from './api.js';
 import { openPetModal } from './modal-animal-details.js';
 import { openModalOrder } from './modal-order.js';
@@ -114,6 +115,10 @@ export async function loadAnimals() {
     if (currentPage < totalPages) {
       showLoadMoreButton();
     } else {
+      iziToast.error({
+        message:'Список тварин закінчився =(',
+        position:'topRight'
+      })
       hideLoadMoreButton();
     }
     currentPage++;
