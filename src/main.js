@@ -1,6 +1,5 @@
 import './js/header';
 import './css/styles.css';
-
 import './js/faq.js';
 // section success-stories
 import { initFeedbackSection } from './js/success-stories.js';
