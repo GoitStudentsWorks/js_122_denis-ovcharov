@@ -204,6 +204,21 @@
   .pet-descr {
     font-size: 14px;
   }
+  .pet-type {
+    font-size: 12px;
+  }
+  .pet-name {
+    font-size: 24px;
+  }
+  .pet-category {
+        font-size: 12px;
+  }
+  .pet-meta {
+    font-size: 12px;
+  }
+  .pet-details-btn {
+    font-size: 16px;
+  }
 }
 
 /* Пагінація сторінок */

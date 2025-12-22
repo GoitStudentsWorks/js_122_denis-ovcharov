@@ -30,6 +30,11 @@ export async function initPetsList() {
     return aIndex - bIndex;
   });
   renderCategories(sortedCategories);
+  if (window.innerWidth >= 1440) {
+    limit = 9;
+} else {
+    limit = 8;
+  };
   await loadAnimals();
 }
 //!=============================================================
