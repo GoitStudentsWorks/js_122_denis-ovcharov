@@ -26,7 +26,6 @@ export async function initFeedbackSection() {
     const paginationEl = section.querySelector('.feedback-swiper-pagination');
     const nextBtn = section.querySelector('.feedback-swiper-button-next');
     const prevBtn = section.querySelector('.feedback-swiper-button-prev');
-    const loader = section.querySelector('.loader');
     
     try {
         // Backend request
@@ -90,45 +89,48 @@ export async function initFeedbackSection() {
 
 // HTML render function
 function renderFeedbackSlide(item) {
-    const name = item?.author ?? 'User';
-    const text = item?.description ?? '';
-    const rating = clampRating(item?.rate ?? 0);
+  const name = item?.author ?? 'User';
+  const text = item?.description ?? '';
+  const rating = clampRating(item?.rate ?? 0);
 
-    
-    const full = Math.floor(rating);
-    const hasHalf = rating % 1 >= 0.5;
-    const ratingClass = `rating value-${full}${hasHalf ? ' half' : ''} star-icon`;
-
-    const stars = Array.from({ length: 5 })
-        .map(
-            () => `
-        <div class="star">
-            <svg class="star-empty" aria-hidden="true">
-                <use href="${starEmpty}"></use>
-            </svg>
-            <svg class="star-half" aria-hidden="true">
-                <use href="${starHalf}"></use>
-            </svg>
-            <svg class="star-filled" aria-hidden="true">
-                <use href="${starFull}"></use>
-            </svg>
-        </div>`
-            ).join('');
-        
-    return `
-        <div class="swiper-slide">
-            <div class="feedback-card">
-                <div class="${ratingClass}">
-                    <div class="star-container">
-                        ${stars}
-                    </div>
-                </div>
-                <p class="feedback-comment">${text}</p>
-                <p class="feedback-author">${name}</p>
-            </div>
+  return `
+    <div class="swiper-slide">
+      <div class="feedback-card">
+        <div class="rating">
+          <div class="star-container">
+            ${renderStars(rating)}
+          </div>
         </div>
-    `;
+
+        <p class="feedback-comment">${text}</p>
+        <p class="feedback-author">${name}</p>
+      </div>
+    </div>
+  `;
 }
+
+
+function renderStars(rating) {
+  return Array.from({ length: 5 }, (_, i) => {
+    const index = i + 1;
+
+    let icon = starEmpty;
+
+    if (rating >= index) {
+      icon = starFull;
+    } else if (rating >= index - 0.5) {
+      icon = starHalf;
+    }
+
+    return `
+      <svg class="star" aria-hidden="true">
+        <use href="${icon}"></use>
+      </svg>
+    `;
+  }).join('');
+}
+
+
 
 // Validation rating between 0 and 5
 function clampRating(val) {
@@ -136,6 +138,9 @@ function clampRating(val) {
     if (!Number.isFinite(n)) return 0;
     return Math.max(0, Math.min(5, n));
 }
+
+
+
 
 // scroll to top button
 const scrollTopBtn = document.querySelector('.scroll-top');
@@ -155,4 +160,3 @@ window.addEventListener('scroll', () => {
         behavior: 'smooth',
     });
 });
-
