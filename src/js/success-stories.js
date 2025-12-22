@@ -4,6 +4,7 @@ import { Navigation, Pagination} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import spriteUrl from '../img/sprite.svg?url';
 
 // Star-rating.css
 import 'css-star-rating/css/star-rating.css';
@@ -102,13 +103,13 @@ function renderFeedbackSlide(item) {
             () => `
         <div class="star">
             <svg class="star-empty" aria-hidden="true">
-                <use href="#star-empty"></use>
+                <use href="./img/stars/star-empty.svg"></use>
             </svg>
             <svg class="star-half" aria-hidden="true">
-                <use href="#star-half"></use>
+                <use href="./img/stars/star-half.svg"></use>
             </svg>
             <svg class="star-filled" aria-hidden="true">
-                <use href="#star-filled"></use>
+                <use href="./img/stars/star-full.svg"></use>
             </svg>
         </div>`
             ).join('');
