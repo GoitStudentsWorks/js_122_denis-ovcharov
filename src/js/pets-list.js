@@ -1,8 +1,8 @@
-import { Pagination } from 'swiper/modules';
 import { getCategories, getAnimals } from './api.js';
 import { openPetModal } from './modal-animal-details.js';
 import { openModalOrder } from './modal-order.js';
 import spriteUrl from '../img/sprite.svg?url';
+import iziToast from 'izitoast';
 //!=============================================================
 let currentPage = 1;
 let totalPages = 1;
@@ -100,14 +100,16 @@ export async function loadAnimals({ reset = false } = {}) {
 
     if (window.innerWidth < 768) {
       if (currentPage < totalPages) showLoadMoreButton();
-      else hideLoadMoreButton();
+      else {
+        iziToast.error({
+          message: 'Список тварин закінчився =(',
+          position: 'topRight'
+        })
+        hideLoadMoreButton();
+      };
       if (!reset) currentPage++;
       refs.pagination.innerHTML = '';
     } else {
-      iziToast.error({
-        message:'Список тварин закінчився =(',
-        position:'topRight'
-      })
       hideLoadMoreButton();
       renderPagination();
     }
