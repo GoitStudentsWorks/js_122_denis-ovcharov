@@ -1,7 +1,8 @@
-import iziToast from 'izitoast';
 import { getCategories, getAnimals } from './api.js';
 import { openPetModal } from './modal-animal-details.js';
 import { openModalOrder } from './modal-order.js';
+import spriteUrl from '../img/sprite.svg?url';
+import iziToast from 'izitoast';
 //!=============================================================
 let currentPage = 1;
 let totalPages = 1;
@@ -29,6 +30,11 @@ export async function initPetsList() {
     return aIndex - bIndex;
   });
   renderCategories(sortedCategories);
+  if (window.innerWidth >= 1440) {
+    limit = 9;
+} else {
+    limit = 8;
+  };
   await loadAnimals();
 }
 //!=============================================================
@@ -37,6 +43,7 @@ const refs = {
   petsList: document.querySelector('.pets-list'),
   loadMoreBtn: document.querySelector('.load-more'),
   loaderPetsList: document.querySelector('.loader'),
+  pagination: document.querySelector('.pagination')
 };
 //!=============================================================
 export function renderCategories(categories) {
@@ -54,23 +61,11 @@ export function renderCategories(categories) {
   }
 }
 //!=============================================================
-export function renderAnimals(animals) {
+export function renderAnimals(animals, { append = true } = {}) {
   const markup = animals
-    .map(
-      ({
-        _id,
-        name,
-        image,
-        species,
-        age,
-        gender,
-        shortDescription,
-        categories,
-      }) => {
-        const categoriesMarkup = categories
-          .map(c => `<p class="pet-category">${c.name}</p>`)
-          .join('');
-        return `
+    .map(({ _id, name, image, species, age, gender, shortDescription, categories }) => {
+      const categoriesMarkup = categories.map(c => `<p class="pet-category">${c.name}</p>`).join('');
+      return `
         <li class="pet-card">
           <img class="pet-img" src="${image}" alt="${name}" />
           <div class="pet-info">
@@ -82,51 +77,161 @@ export function renderAnimals(animals) {
               <li>${gender}</li>
             </ul>
             <p class="pet-descr">${shortDescription}</p>
-            <button class="pet-details-btn" data-id="${_id}">
-              Дізнатись більше
-            </button>
+            <button class="pet-details-btn" data-id="${_id}">Дізнатись більше</button>
           </div>
         </li>
       `;
-      }
-    )
-    .join('');
+    }).join('');
+
+  if (!append) refs.petsList.innerHTML = '';
   refs.petsList.insertAdjacentHTML('beforeend', markup);
+
+  if (!append) allAnimals = animals;
+  else allAnimals.push(...animals);
 }
 //!===============================================================================
-export async function loadAnimals() {
+export async function loadAnimals({ reset = false } = {}) {
   showLoader();
   try {
     const { animals, totalItems } = await getAnimals({
       page: currentPage,
       limit,
-      categoryId: currentCategoryId,
+      categoryId: currentCategoryId
     });
-
-    allAnimals.push(...animals);
-
-    if (animals.length === 0) {
-      hideLoadMoreButton();
-      return;
-    }
-    renderAnimals(animals);
+    const append = !reset && window.innerWidth < 768;
+    renderAnimals(animals, { append });
 
     totalPages = Math.ceil(totalItems / limit);
-    if (currentPage < totalPages) {
-      showLoadMoreButton();
+
+    if (window.innerWidth < 768) {
+      if (currentPage < totalPages) showLoadMoreButton();
+      else {
+        iziToast.error({
+          message: 'Список тварин закінчився =(',
+          position: 'topRight'
+        })
+        hideLoadMoreButton();
+      };
+      if (!reset) currentPage++;
+      refs.pagination.innerHTML = '';
     } else {
-      iziToast.error({
-        message:'Список тварин закінчився =(',
-        position:'topRight'
-      })
       hideLoadMoreButton();
+      renderPagination();
     }
-    currentPage++;
   } catch (err) {
     console.error('API error:', err);
   } finally {
     hideLoader();
   }
+}
+//!===============================================================================
+function renderPagination() {
+  if (totalPages <= 1 || window.innerWidth < 768) {
+    refs.pagination.innerHTML = '';
+    return;
+  }
+
+  refs.pagination.innerHTML = '';
+
+  const prev = document.createElement('button');
+  prev.classList.add('pagination-arrow');
+  prev.innerHTML = `
+    <svg class="pagination-arrow-img" width="16" height="16">
+      <use href="${spriteUrl}#icon-left"></use>
+    </svg>
+  `;
+  prev.disabled = currentPage === 1;
+  
+  if (prev.disabled) {
+    prev.classList.add('btn-is-disabled');
+  }
+  
+  prev.addEventListener('click', () => {
+    currentPage--;
+    loadAnimals({ reset: true });
+    scrollToTop();
+  });
+  refs.pagination.appendChild(prev);
+
+  const pages = [];
+
+  if (totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) pages.push(i);
+  } else {
+    if (currentPage <= 3) {
+      pages.push(1, 2, 3, 4, '...', totalPages);
+    }
+
+    else if (currentPage >= totalPages - 2) {
+      pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+    }
+
+    else {
+      pages.push(
+        1, '...',
+        currentPage - 1, currentPage, currentPage + 1,
+        '...', totalPages
+      );
+    }
+  }
+
+  pages.forEach(num => {
+    const btn = document.createElement('button');
+    btn.classList.add('pagination-btn');
+
+    btn.textContent = num;
+
+    if (num === currentPage) btn.classList.add('pagination-btn-active');
+
+    if (num !== '...') {
+      btn.addEventListener('click', () => {
+        if (currentPage === num) return;
+        currentPage = num;
+        loadAnimals({ reset: true });
+        scrollToTop();
+      });
+    } else {
+      btn.disabled = true;
+      btn.classList.add('pagination-dots');
+    }
+
+    refs.pagination.appendChild(btn);
+  });
+
+  const next = document.createElement('button');
+  next.classList.add('pagination-arrow');
+  next.innerHTML = `
+    <svg class="pagination-arrow-img" width="16" height="16">
+      <use href="${spriteUrl}#icon-right"></use>
+    </svg>
+  `;
+  next.disabled = currentPage === totalPages;
+  if (next.disabled) {
+    next.classList.add('btn-is-disabled')
+  }
+  next.addEventListener('click', () => {
+    currentPage++;
+    loadAnimals({ reset: true });
+    scrollToTop();
+  });
+
+  refs.pagination.appendChild(next);
+}
+//!===============================================================================
+function scrollToTop() {
+  const section = document.querySelector('#pets-list');
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+//!===============================================================================
+export function scroll() {
+  const firstCard = document.querySelector('.pet-card');
+  if (!firstCard) return;
+  const itemHeight = firstCard.getBoundingClientRect().height;
+  window.scrollBy({
+    top: itemHeight,
+    left: 0,
+    behavior: 'smooth',
+  });
 }
 //!===============================================================================
 export function showLoader() {
@@ -152,19 +257,7 @@ refs.loadMoreBtn.addEventListener('click', async () => {
   scroll();
 });
 //!===============================================================================
-export function scroll() {
-  const firstCard = document.querySelector('.pet-card');
-  if (!firstCard) return;
-  const itemHeight = firstCard.getBoundingClientRect().height;
-  window.scrollBy({
-    top: itemHeight,
-    left: 0,
-    behavior: 'smooth',
-  });
-}
-//!===============================================================================
 refs.petsFilters.addEventListener('click', e => {
-  hideLoadMoreButton();
   const btn = e.target.closest('.pets-filters-btn');
   if (!btn) return;
 
@@ -176,7 +269,7 @@ refs.petsFilters.addEventListener('click', e => {
   currentPage = 1;
   refs.petsList.innerHTML = '';
 
-  loadAnimals();
+  loadAnimals({ reset: true });
 });
 //!=================================================================================
 document.addEventListener('click', e => {
@@ -195,28 +288,47 @@ document.addEventListener('click', e => {
   }
 });
 //!=======================================================================================
-const mediaQuery = window.matchMedia('(min-width: 1440px)');
+let lastMode = window.innerWidth < 768 ? 'mobile' :
+               window.innerWidth < 1440 ? 'tablet' : 'desktop';
 
-let initialized = false;
+window.addEventListener('resize', () => {
 
-function handleMediaChange(e) {
-  const newLimit = e.matches ? 9 : 8;
+  const newMode = window.innerWidth < 768 ? 'mobile' :
+                  window.innerWidth < 1440 ? 'tablet' : 'desktop';
 
-  if (!initialized) {
-    initialized = true;
-    limit = newLimit;
+  if (newMode === lastMode) return;
+
+  lastMode = newMode;
+
+  if (newMode === 'mobile') {
+    limit = 8;
+    refs.pagination.innerHTML = '';
+    
+    currentPage=1;
+    loadAnimals({ reset: true });
+    currentPage++;
+    if (currentPage <= totalPages) {
+    showLoadMoreButton();
+  } else {
+    hideLoadMoreButton();
+  }
     return;
   }
 
-  if (limit !== newLimit) {
-    limit = newLimit;
+  if (newMode === 'tablet') {
+    limit = 8;
     currentPage = 1;
     allAnimals = [];
     refs.petsList.innerHTML = '';
-    loadAnimals();
+    loadAnimals({ reset: true });
+    return;
   }
-}
 
-mediaQuery.addEventListener('change', handleMediaChange);
-
-handleMediaChange(mediaQuery);
+  if (newMode === 'desktop') {
+    limit = 9;
+    currentPage = 1;
+    allAnimals = [];
+    refs.petsList.innerHTML = '';
+    loadAnimals({ reset: true });
+  }
+});
