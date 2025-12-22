@@ -4,11 +4,12 @@ import { Navigation, Pagination} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import spriteUrl from '../img/sprite.svg?url';
 
 // Star-rating.css
 import 'css-star-rating/css/star-rating.css';
-
+import starFull from '../img/stars/star-full.svg?url';
+import starEmpty from '../img/stars/star-empty.svg?url';
+import starHalf from '../img/stars/star-half.svg?url';
 // iziToast
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -103,13 +104,13 @@ function renderFeedbackSlide(item) {
             () => `
         <div class="star">
             <svg class="star-empty" aria-hidden="true">
-                <use href="./img/stars/star-empty.svg"></use>
+                <use href="${starEmpty}"></use>
             </svg>
             <svg class="star-half" aria-hidden="true">
-                <use href="./img/stars/star-half.svg"></use>
+                <use href="${starHalf}"></use>
             </svg>
             <svg class="star-filled" aria-hidden="true">
-                <use href="./img/stars/star-full.svg"></use>
+                <use href="${starFull}"></use>
             </svg>
         </div>`
             ).join('');
