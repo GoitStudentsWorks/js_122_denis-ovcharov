@@ -123,9 +123,7 @@ function renderStars(rating) {
     }
 
     return `
-      <svg class="star" aria-hidden="true">
-        <use href="${icon}"></use>
-      </svg>
+      <img class="star" src="${icon}" alt="Rating">
     `;
   }).join('');
 }
