@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/animals-goit-project/",
+    "build": "vite build --base=/js_122_denis-ovcharov/",
     "preview": "vite preview",
     "push": "git add . && git commit -m 'update' && git push"
   },
